@@ -1,4 +1,4 @@
-NAME	= Form
+NAME	= AForm
 CC		= c++ -std=c++98
 CLAFGS	= -Wall -Wextra -Werror
 SRCS	= $(wildcard *.cpp)

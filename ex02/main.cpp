@@ -1,27 +1,38 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "AForm.hpp"
 
 int main()
 {
+
     {
-        Bureaucrat b("Marvin");
-        try {
-            Form a("Invalid Form", 0, 100);
-        } catch (std::exception &e) {
-            std::cout << e.what() << std::endl;
+        Bureaucrat a("Trillian", 25);
+        Bureaucrat b("Ford Prefect", 1);
+        AForm* rqf = new RobotomyRequestForm("Marvin");
+        PresidentialPardonForm ppf("Arthur Dent");
+        a.signAForm(*rqf);
+        a.signAForm(ppf);
+        a.executeForm(*rqf);
+        a.executeForm(ppf);
+        b.executeForm(ppf);
+        delete rqf;
+    }
+    {
+        Bureaucrat z("The whale in Magrathea");
+        ShrubberyCreationForm scf("shrub");
+        z.executeForm(scf);
+        z.signAForm(scf);
+        for (size_t i = 0; i < 10; ++i) {
+            z.increment();
         }
+        z.signAForm(scf);
+        z.executeForm(scf);
+        for (size_t i = 0; i < 10; ++i) {
+            z.increment();
+        }
+        z.executeForm(scf);
     }
-    {
-        Bureaucrat a("Arthur", 20);
-        Form f("Military Form", 20, 10);
-        std::cout << f;
-        a.signForm(f);
-        std::cout << f;
-    }
-    {
-        Bureaucrat b("Beeblebrox", 50);
-        Form f("Education Form", 40, 20);
-        std::cout << f;
-        b.signForm(f);
-        std::cout << f;
-    }
+
 }

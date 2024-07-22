@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat {
     private:
@@ -18,7 +18,8 @@ class Bureaucrat {
         size_t getGrade(void) const;
         void increment(void);
         void decrement(void);
-        void signForm(Form& f);
+        void signAForm(AForm& f);
+        void executeForm(AForm const & form);
         class GradeTooHighException: public std::exception {
             const char* what() const throw();
         };

@@ -1,27 +1,28 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
+    Intern someRandomIntern;
+    AForm* rrf;
+    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
+    Bureaucrat a("Marvin", 42);
+    a.signAForm(*rrf);
+    a.executeForm(*rrf);
+    delete rrf;
+
+    AForm* zpf;
+    try 
     {
-        Bureaucrat b("Marvin");
-        try {
-            Form a("Invalid Form", 0, 100);
-        } catch (std::exception &e) {
-            std::cout << e.what() << std::endl;
-        }
-    }
+        zpf = someRandomIntern.makeForm("some random form", "xd");
+        delete zpf;
+    } 
+    catch (std::exception &e) 
     {
-        Bureaucrat a("Arthur", 20);
-        Form f("Military Form", 20, 10);
-        std::cout << f;
-        a.signForm(f);
-        std::cout << f;
-    }
-    {
-        Bureaucrat b("Beeblebrox", 50);
-        Form f("Education Form", 40, 20);
-        std::cout << f;
-        b.signForm(f);
-        std::cout << f;
+        std::cout << e.what() << std::endl;
     }
 }
