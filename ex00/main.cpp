@@ -12,8 +12,6 @@ int main(void)
     {
         std::cerr << e.what() << std::endl;
     }
-    
-
     try
     {
         Bureaucrat Nelson("Nelson", -10);
